@@ -1,44 +1,43 @@
-#regno, name, age, gender, address number, hobby, bloodgroup
+#Inlab 7 ~ digi0ps
 # Operation A
-file = open("ffcs.csv", "r");
-for record in file:
-	print(record);
-file.close();
+def readfile():
+	with open("ffcs.csv", "r") as file:
+		for record in file:
+			print(record,end="");
+
+readfile();
 
 #Operation B
-file = open("ffcs.csv", "a");
-new1 = [str(input()) for i in range(8)];
-file.write(','.join(new1));
-file.close();
+with open("ffcs.csv", "a") as file:
+	new1 = [str(input()) for i in range(8)];
+	file.write(','.join(new1)+"\n");
+readfile();
 
 #Operation C
-file = open("ffcs.csv", "a+");
-new2 = [str(input()) for i in range(8)];
-flag = 0;
-for record in file:
-	if new2[0] in record:
-		flag = 1;
-		break;
-if not flag:
-	file.write(",".join(new2));
-file.close();
-
-file.write(','.join(new1));
-file.close();
+with open("ffcs.csv", "r+") as file:
+	new2 = [str(input()) for i in range(8)];
+	flag = 1;
+	for record in file:
+		if new2[0] == record.split(",")[0]:
+			flag = 0;
+			break;
+	if flag:
+		file.write("\n"+",".join(new2));
+	readfile();
 
 #Operation D
-malplayers = 0;
-file = open("ffcs.csv", "r");
-for record in file:
-	if "Kerala" in record:
-		malplayers+=1;
-print(malplayers);
+with open("ffcs.csv", "r") as file:
+	malplayers = 0;
+	for record in file:
+		if "Kerala" in record:
+			malplayers+=1;
+	print(malplayers);
 
 #Operation E
-file = open("ffcs.csv", "r");
-for record in file:
-	if "Tamilnadu" in record and "A+" in record:
-		fields = record.split(",");
-		print(fields[0], fields[4]);
+with open("ffcs.csv", "r") as file:
+	for record in file:
+		if "Tamilnadu" in record and "A+" in record:
+			fields = record.split(",");
+			print(fields[1], fields[4]);
 
-file.close();
+#www.github.com/digi0ps
