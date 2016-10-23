@@ -8,4 +8,4 @@ def getdivisors(num):
 if sum(getdivisors(n1)) == n2 and sum(getdivisors(n2)) == n1:
 	print("Yes");
 else:
-	print("No");
+	print("No");	
